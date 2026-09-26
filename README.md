@@ -1,4 +1,4 @@
-# jev-cli
+# jev
 
 An unofficial, provider-neutral command-line client for [Jev](https://typesafe.ai/blog/introducing-system-one-models-and-jev), the System One model from [TypeSafe AI](https://typesafe.ai/). Written in Rust.
 
@@ -13,7 +13,7 @@ The command-line interface follows [stefafafan/jev](https://github.com/stefafafa
 ## Installation
 
 ```bash
-cargo install --git https://github.com/polidog/jev-cli
+cargo install --git https://github.com/polidog/jev
 ```
 
 Or build from source:
@@ -138,3 +138,7 @@ billing
 | 0 | The evaluation succeeded |
 | 1 | The request failed (missing credentials, HTTP error, invalid request) |
 | 2 | Invalid command-line usage |
+
+## License
+
+[MIT](LICENSE)
