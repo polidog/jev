@@ -1,11 +1,6 @@
-mod cli;
-mod http;
-mod model;
-mod output;
-mod provider;
-
 use anyhow::Result;
 use clap::Parser;
+use jev::{cli, output, provider};
 
 fn main() -> Result<()> {
     let cli = cli::Cli::parse();
