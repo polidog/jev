@@ -13,7 +13,7 @@ The command-line interface follows [stefafafan/jev](https://github.com/stefafafa
 ## Installation
 
 ```bash
-cargo install --git https://github.com/polidog/jev
+cargo install polidog-jev   # installs the `jev` binary
 ```
 
 Or build from source:

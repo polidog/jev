@@ -1,10 +1,17 @@
 [package]
-name = "jev"
+name = "polidog-jev"
 version = "0.1.0"
 edition = "2024"
 description = "Unofficial, provider-neutral CLI for TypeSafe Jev"
 license = "MIT"
 repository = "https://github.com/polidog/jev"
+
+[lib]
+name = "jev"
+
+[[bin]]
+name = "jev"
+path = "src/main.rs"
 
 [dependencies]
 anyhow = "1.0.104"
