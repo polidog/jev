@@ -139,6 +139,44 @@ billing
 | 1 | The request failed (missing credentials, HTTP error, invalid request) |
 | 2 | Invalid command-line usage |
 
+## Library
+
+The same client is usable from Rust. The crate is published as `polidog-jev`; rename it to `jev` in `Cargo.toml`:
+
+```toml
+[dependencies]
+jev = { package = "polidog-jev", version = "0.1" }
+anyhow = "1"
+indexmap = "2"
+serde_json = "1"
+```
+
+Build a `Request`, pick a provider, and read the answers by key:
+
+```rust
+use indexmap::IndexMap;
+use jev::cli::ProviderKind;
+use jev::model::{Answer, Question, Request};
+use serde_json::json;
+
+fn main() -> anyhow::Result<()> {
+    let req = Request {
+        state: json!({ "title": "Understanding lifetimes in Rust" }),
+        questions: IndexMap::from([(
+            "match".to_string(),
+            Question::Noul { instructions: json!("Is this page about Rust memory management?"), criteria: None },
+        )]),
+    };
+    let res = jev::provider::of(ProviderKind::Typesafe).evaluate(&req)?;
+    if let Some(Answer::Noul { noul }) = res.answers.get("match") {
+        println!("{noul}");
+    }
+    Ok(())
+}
+```
+
+`evaluate` blocks until the answer arrives. Credentials come from the same environment variables as the CLI.
+
 ## License
 
 [MIT](LICENSE)
